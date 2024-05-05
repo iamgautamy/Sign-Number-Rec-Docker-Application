@@ -1,12 +1,11 @@
-from flask import Flask, render_template, Response,flash
+from flask import Flask, render_template, Response,flash,Blueprint
 import cv2
 import mediapipe as mp
 import pandas as pd
 import os
 import numpy as np
 import pickle
-
-app = Flask(__name__)
+app = Blueprint('Site', __name__, template_folder='templates')
 
 def image_processed(hand_img):
     # Image processing
@@ -89,7 +88,7 @@ def gen_frames():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('Site/index.html')
 
 @app.route('/video_feed')
 def video_feed():
