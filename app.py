@@ -5,7 +5,7 @@ import pandas as pd
 import os
 import numpy as np
 import pickle
-app = Blueprint('Site', __name__, template_folder='templates')
+app = Flask(__name__)
 
 def image_processed(hand_img):
     # Image processing
