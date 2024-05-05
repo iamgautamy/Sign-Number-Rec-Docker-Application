@@ -5,7 +5,7 @@ import pandas as pd
 import os
 import numpy as np
 import pickle
-app = Flask(__name__,template_folder="../template")
+app = Flask(__name__,template_folder="templates")
 
 def image_processed(hand_img):
     # Image processing
@@ -86,7 +86,7 @@ def gen_frames():
     cap.release()
 
 
-@app.route('/')
+@app.route('/home')
 def index():
     return render_template('index.html')
 
@@ -95,4 +95,5 @@ def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=80,debug=True)
+    app.logger.error('An error occurred')
