@@ -5,7 +5,7 @@ import pandas as pd
 import os
 import numpy as np
 import pickle
-app = Flask(__name__)
+app = Flask(__name__,template_folder="../template")
 
 def image_processed(hand_img):
     # Image processing
@@ -88,7 +88,7 @@ def gen_frames():
 
 @app.route('/')
 def index():
-    return render_template('Site/index.html')
+    return render_template('index.html')
 
 @app.route('/video_feed')
 def video_feed():
